@@ -49,7 +49,7 @@ namespace WikiOnThisDay
 
             if (wEvent != null)
             {
-                await tContext.TweetAsync(wEvent.description + " - " + wEvent.year);
+                await tContext.TweetAsync(wEvent.year + " - " + wEvent.description);
 
             }
 
