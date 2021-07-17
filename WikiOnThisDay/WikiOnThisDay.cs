@@ -45,7 +45,14 @@ namespace WikiOnThisDay
 
             var hour = DateTime.Now.Hour;
 
-            var wEvent = data.events.ElementAtOrDefault(hour);
+            Event wEvent;
+            if (data.events.Count() > 23)
+            {
+                var skips = data.events.Count() - 23;
+                wEvent = data.events.Skip(skips).ElementAtOrDefault(hour);
+            }
+            else
+                wEvent = data.events.ElementAtOrDefault(hour);
 
             if (wEvent != null)
             {
