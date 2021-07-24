@@ -49,9 +49,19 @@ jobs:
       id: plan
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
+      env:
+         TF_VAR_access_token: ${{ secrets.ACCESS_TOKEN}}
+         TF_VAR_access_token_secret: ${{ secrets.ACCESS_TOKEN_SECRET }}
+         TF_VAR_consumer_key: ${{ secrets.CONSUMER_KEY }}
+         TF_VAR_consumer_secret: ${{ secrets.CONSUMER_SECRET }}
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+      env:
+         TF_VAR_access_token: ${{ secrets.ACCESS_TOKEN}}
+         TF_VAR_access_token_secret: ${{ secrets.ACCESS_TOKEN_SECRET }}
+         TF_VAR_consumer_key: ${{ secrets.CONSUMER_KEY }}
+         TF_VAR_consumer_secret: ${{ secrets.CONSUMER_SECRET }}
  
    

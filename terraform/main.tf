@@ -24,6 +24,11 @@ provider "azurerm" {
 
 data "azurerm_client_config" "current" {}
 
+variable "access_token" {}
+variable "access_token_secret" {}
+variable "consumer_key" {}
+variable "consumer_secret" {}
+
 
 resource "azurerm_resource_group" "rg" {
   name     = "WikiOnThisDay"
@@ -60,7 +65,11 @@ resource "azurerm_function_app" "function" {
   app_settings = {
     "FUNCTIONS_WORKER_RUNTIME"        = "dotnet-isolated",
     "WEBSITE_RUN_FROM_PACKAGE"        = "1",
-    "WEBSITE_ENABLE_SYNC_UPDATE_SITE" = "true"
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE" = "true",
+    "AccessToken" = var.access_token,
+    "AccessTokenSecret" = var.access_token_secret,
+    "ConsumerKey" = var.consumer_key,
+    "ConsumerSecret" = var.consumer_secret,
   }
 
 }
