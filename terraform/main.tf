@@ -58,8 +58,8 @@ resource "azurerm_function_app" "function" {
   storage_account_name       = azurerm_storage_account.functionstorage.name
   storage_account_access_key = azurerm_storage_account.functionstorage.primary_access_key
   app_settings = {
-    "FUNCTIONS_WORKER_RUNTIME" = "dotnet-isolated",
-    "WEBSITE_RUN_FROM_PACKAGE" = "1",
+    "FUNCTIONS_WORKER_RUNTIME"        = "dotnet-isolated",
+    "WEBSITE_RUN_FROM_PACKAGE"        = "1",
     "WEBSITE_ENABLE_SYNC_UPDATE_SITE" = "true"
   }
 
