@@ -1,8 +1,8 @@
 name: Build and deploy .NET Core Function App to Azure functions app
 on:
   push:
-    paths:
-        - '!terraform/**'
+    paths-ignore:
+        - 'terraform/**'
     branches:
     - main
 env:
